@@ -22,4 +22,4 @@
 4. Add event listeners on each square and add hover effect when the mouse goes into the square. When the mouse leaves the square, add the pixelated trail. 
 5. Add event listener for new grid button. Clicking it prompts for the size of the new grid you want. 
 6. Submitting the prompt removes the existing grid, adds the new grid in the correct size. Max of 100x100 is allowed. Anything else throws an error. 
-7. Add randomized color for hover and or pixelated trail. Likely using function to assign random RGB value to hover or background color after triggering an event handler. 
+7. Add randomized color for hover and or pixelated trail. Likely using function to assign random RGB value to hover or background color after triggering an event handler. Do this on a new branch after completing project. 

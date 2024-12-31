@@ -1,2 +1,13 @@
 /* style for ektch-a-sketch game */
 
+#title {
+    display: flex;
+    justify-content: center;
+}
+
+#gameInfo {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px;
+    gap: 25px;
+}

@@ -1,0 +1,1 @@
+# Planning and pseudocode for etch-a-sketch game

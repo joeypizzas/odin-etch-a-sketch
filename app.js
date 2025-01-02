@@ -2,6 +2,7 @@
 
 let gridSize = 16;
 
+// Function that creates grid using input number of squares
 function createGrid(gridSizeInput) {
     for (let i = 0; i < gridSizeInput; i++) {
         const grid = document.querySelector("#grid");
@@ -17,3 +18,12 @@ function createGrid(gridSizeInput) {
 }
 
 createGrid(gridSize);
+
+/* Adds hover effect when entering square, NOT WORKING, FIGURE THIS OUT 
+
+const hover = document.querySelectorAll(".gridSquare");
+hover.forEach((square) => {
+    hover.addEventListener("mouseenter", () => {
+        square.style.backgroundColor = "grey";
+    });
+}); */

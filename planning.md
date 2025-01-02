@@ -18,7 +18,12 @@
 ## Given your inputs, what are the steps necessary to return the desired output?
 1. Add the title and initial explanations in HTML. 
 2. Add new grid button, maybe on the same line as the initial explanation of the game. 
-3. Create the grid using divs via DOM in JS. Create them using a loop and flexbox to appear correctly. Make sure the gird is the correct size (960px each side). 
+3. Create the grid using divs via DOM in JS. Create them using a loop and flexbox to appear correctly. Make sure the gird is the correct size (960px each side).
+    - Add flexbox to grid container, along with max-width and max-height, and flex-direction column. 
+    - Initialize grid size variable. 
+    - Create a function for creating the grid. 
+        - This function takes a grid size input as a parameter, which is used to determine the size of the grid. 
+        - Use for loops to create grid. Create a div, apply flex box to it and flex:1 and insert it inside the grid container, and then use another for loop to create divs inside of that until you reach the size of the grid. Apply flex:1 to all divs in the second for loop and insert the inside the div you just created with the first loop. Repeat the first for loop until you hit the correct size of the grid. 
 4. Add event listeners on each square and add hover effect when the mouse goes into the square. When the mouse leaves the square, add the pixelated trail. 
 5. Add event listener for new grid button. Clicking it prompts for the size of the new grid you want. 
 6. Submitting the prompt removes the existing grid, adds the new grid in the correct size. Max of 100x100 is allowed. Anything else throws an error. 

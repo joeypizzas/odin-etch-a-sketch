@@ -10,4 +10,21 @@
     justify-content: space-between;
     padding: 0px 50px;
     gap: 25px;
+    margin-bottom: 25px;
+}
+
+#grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gridColumn {
+    display: flex;
+}
+
+.gridSquare {
+    border: 1px solid black;
+    padding: 15px;
 }

@@ -34,3 +34,10 @@ trail.forEach((square) => {
         square.style.backgroundColor = "black";
     });
 });
+
+// Function that removes the grid. Used later as part of resetting sketchpad
+function removeGrid() {
+    const grid = document.querySelector("#grid");
+    const allGridColumns = document.querySelectorAll(".gridColumn");
+    allGridColumns.forEach((gridColumn) => grid.removeChild(gridColumn));
+}

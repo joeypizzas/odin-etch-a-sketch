@@ -42,6 +42,8 @@ function removeGrid() {
     allGridColumns.forEach((gridColumn) => grid.removeChild(gridColumn));
 }
 
+
+// HOVER AND PIXELATED TRAIL NOT WORKING AFTER CHANGING GRID SIZE
 // Takes user input from reset sketchpad button. Checks to make sure it's valid. Removes existing grid. Adds new grid with correct size.  
 const resetSketchpad = document.querySelector("#button");
 resetSketchpad.addEventListener("click", () => {

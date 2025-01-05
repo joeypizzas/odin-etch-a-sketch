@@ -25,6 +25,10 @@
         - This function takes a grid size input as a parameter, which is used to determine the size of the grid. 
         - Use for loops to create grid. Create a div, apply flex box to it and flex:1 and insert it inside the grid container, and then use another for loop to create divs inside of that until you reach the size of the grid. Apply flex:1 to all divs in the second for loop and insert the inside the div you just created with the first loop. Repeat the first for loop until you hit the correct size of the grid. 
 4. Add event listeners on each square and add hover effect when the mouse goes into the square. When the mouse leaves the square, add the pixelated trail. 
-5. Add event listener for new grid button. Clicking it prompts for the size of the new grid you want. 
-6. Submitting the prompt removes the existing grid, adds the new grid in the correct size. Max of 100x100 is allowed. Anything else throws an error. 
+5. Handle sketchpad reset: 
+    - Write function that removes the existing grid. 
+    - Add event listener on new grid button. 
+    - Clicking it prompts for the size of the new grid you want.
+    - Submitting it calls function that removes the existing grid, adds the new grid. Max size of 100x100 is allowed. Anything bigger throws an error. Non-numbers throws an error. Negative numbers throws an error. Non-integers throw an error. 
+    - Make sure new grid is added in the same total space as initial grid. 
 7. Add randomized color for hover and or pixelated trail. Likely using function to assign random RGB value to hover or background color after triggering an event handler. Do this on a new branch after completing project. 

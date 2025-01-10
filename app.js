@@ -42,43 +42,54 @@ function removeGrid() {
     allGridColumns.forEach((gridColumn) => grid.removeChild(gridColumn));
 }
 
-
-// HOVER AND PIXELATED TRAIL NOT WORKING AFTER CHANGING GRID SIZE
-// Takes user input from reset sketchpad button. Checks to make sure it's valid. Removes existing grid. Adds new grid with correct size.  
+// Takes user input from reset sketchpad button. Makes sure it's valid. Removes existing grid. Adds new grid with correct size. 
+// NEED TO MAKE SURE NEW GRID IS SAME TOTAL SIZE AS INITIAL GRID 
 const resetSketchpad = document.querySelector("#button");
 resetSketchpad.addEventListener("click", () => {
     let newGridInput = prompt("Please enter the number of squares per side of the new sketchpad:");
     const errorMessage = document.querySelector("#error");
-    // const priorError = document.querySelector(".errorMessage"); NOT FULLY WORKING YET
+    const priorError = document.querySelector(".errorMessage");
     if (Number(newGridInput) <= 0) {
-        // errorMessage.removeChild(priorError); ERROR NOT SHOWING ON FIRST TRY, ONLY WORKS IF THERE IS ALREADY AN ERROR
+        if (priorError) {
+            errorMessage.removeChild(priorError);
+        }
         const zeroOrLess = document.createElement("div");
         zeroOrLess.classList.add("errorMessage");
         zeroOrLess.textContent = "Whoops! Your sketchpad can't have 0 or negative squares. Please enter a different sketchpad size.";
         zeroOrLess.style.cssText = "color: red; padding: 0px 50px; margin-bottom: 25px;";
         errorMessage.appendChild(zeroOrLess);
     } else if (Number(newGridInput) >= 100) {
+        if (priorError) {
+            errorMessage.removeChild(priorError);
+        }
         const gridTooBig = document.createElement("div");
         gridTooBig.classList.add("errorMessage");
-        gridTooBig.textContent = "Whoops! Your sketchpad can't have more than 100 squares per side. Please enter a different sketchpad size.";
+        gridTooBig.textContent = "Whoops! Your sketchpad can't have 100 or more squares per side. Please enter a different sketchpad size.";
         gridTooBig.style.cssText = "color: red; padding: 0px 50px; margin-bottom: 25px;";
         errorMessage.appendChild(gridTooBig);
     } else if (typeof newGridInput != "number" && isNaN(newGridInput)) {
+        if (priorError) {
+            errorMessage.removeChild(priorError);
+        }
         const notANumber = document.createElement("div");
         notANumber.classList.add("errorMessage");
         notANumber.textContent = "Whoops! You didn't enter a number. Please enter a valid sketchpad size.";
         notANumber.style.cssText = "color: red; padding: 0px 50px; margin-bottom: 25px;";
         errorMessage.appendChild(notANumber);
     } else if (!Number.isInteger(Number(newGridInput))) {
+        if (priorError) {
+            errorMessage.removeChild(priorError);
+        }
         const notAnInt = document.createElement("div");
         notAnInt.classList.add("errorMessage");
         notAnInt.textContent = "Whoops! Your sketchpad size had a decimal. Please enter a whole number when resetting it.";
         notAnInt.style.cssText = "color: red; padding: 0px 50px; margin-bottom: 25px;";
         errorMessage.appendChild(notAnInt);
     } else {
+        if (priorError) {
+            errorMessage.removeChild(priorError);
+        }
         removeGrid();
         createGrid(newGridInput);
     }
 });
-
-console.log(document.querySelectorAll(".gridSquare"));

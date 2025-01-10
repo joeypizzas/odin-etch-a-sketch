@@ -49,46 +49,34 @@ resetSketchpad.addEventListener("click", () => {
     let newGridInput = prompt("Please enter the number of squares per side of the new sketchpad:");
     const errorMessage = document.querySelector("#error");
     const priorError = document.querySelector(".errorMessage");
+    if (priorError) {
+        errorMessage.removeChild(priorError);
+    }
     if (Number(newGridInput) <= 0) {
-        if (priorError) {
-            errorMessage.removeChild(priorError);
-        }
         const zeroOrLess = document.createElement("div");
         zeroOrLess.classList.add("errorMessage");
         zeroOrLess.textContent = "Whoops! Your sketchpad can't have 0 or negative squares. Please enter a different sketchpad size.";
         zeroOrLess.style.cssText = "color: red; padding: 0px 50px; margin-bottom: 25px;";
         errorMessage.appendChild(zeroOrLess);
     } else if (Number(newGridInput) >= 100) {
-        if (priorError) {
-            errorMessage.removeChild(priorError);
-        }
         const gridTooBig = document.createElement("div");
         gridTooBig.classList.add("errorMessage");
         gridTooBig.textContent = "Whoops! Your sketchpad can't have 100 or more squares per side. Please enter a different sketchpad size.";
         gridTooBig.style.cssText = "color: red; padding: 0px 50px; margin-bottom: 25px;";
         errorMessage.appendChild(gridTooBig);
     } else if (typeof newGridInput != "number" && isNaN(newGridInput)) {
-        if (priorError) {
-            errorMessage.removeChild(priorError);
-        }
         const notANumber = document.createElement("div");
         notANumber.classList.add("errorMessage");
         notANumber.textContent = "Whoops! You didn't enter a number. Please enter a valid sketchpad size.";
         notANumber.style.cssText = "color: red; padding: 0px 50px; margin-bottom: 25px;";
         errorMessage.appendChild(notANumber);
     } else if (!Number.isInteger(Number(newGridInput))) {
-        if (priorError) {
-            errorMessage.removeChild(priorError);
-        }
         const notAnInt = document.createElement("div");
         notAnInt.classList.add("errorMessage");
         notAnInt.textContent = "Whoops! Your sketchpad size had a decimal. Please enter a whole number when resetting it.";
         notAnInt.style.cssText = "color: red; padding: 0px 50px; margin-bottom: 25px;";
         errorMessage.appendChild(notAnInt);
     } else {
-        if (priorError) {
-            errorMessage.removeChild(priorError);
-        }
         removeGrid();
         createGrid(newGridInput);
     }

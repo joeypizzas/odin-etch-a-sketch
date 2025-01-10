@@ -20,19 +20,19 @@ function createGrid(gridSizeInput) {
 createGrid(gridSize);
 
 // Adds hover effect when entering square 
-const hover = document.querySelectorAll(".gridSquare");
-hover.forEach((square) => {
-    square.addEventListener("mouseenter", () => {
-        square.style.backgroundColor = "lightgrey";
-    });
+const hover = document.querySelector("#grid");
+hover.addEventListener("mouseover", (event) => {
+    if (event.target.classList.contains("gridSquare")) {
+        event.target.style.backgroundColor = "lightgrey";
+    }
 });
 
 // Removes hover effect and adds pixelated trail when leaving square
-const trail = document.querySelectorAll(".gridSquare");
-trail.forEach((square) => {
-    square.addEventListener("mouseleave", () => {
-        square.style.backgroundColor = "black";
-    });
+const trail = document.querySelector("#grid");
+trail.addEventListener("mouseout", (event) => {
+    if (event.target.classList.contains("gridSquare")) {
+        event.target.style.backgroundColor = "black";
+    }
 });
 
 // Function that removes the grid. Used later as part of resetting sketchpad
@@ -80,3 +80,5 @@ resetSketchpad.addEventListener("click", () => {
         createGrid(newGridInput);
     }
 });
+
+console.log(document.querySelectorAll(".gridSquare"));

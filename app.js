@@ -2,17 +2,24 @@
 
 let gridSize = 16;
 
+// Function that calculates padding per square for 800px width x height grid
+function calculatePadding(userGridInput) {
+    let newPadding = ((800 / userGridInput) / 2 - 1) + "px";
+    return newPadding;
+}
+
 // Function that creates grid using input number of squares
 function createGrid(gridSizeInput) {
     for (let i = 0; i < gridSizeInput; i++) {
         const grid = document.querySelector("#grid");
-        const newGridColumn = document.createElement("div");
-        newGridColumn.classList.add("gridColumn");
-        grid.appendChild(newGridColumn);
+        const newGridRow = document.createElement("div");
+        newGridRow.classList.add("gridRow");
+        grid.appendChild(newGridRow);
         for (let j = 0; j < gridSizeInput; j++) {
             const newGridSquare = document.createElement("div");
             newGridSquare.classList.add("gridSquare");
-            newGridColumn.appendChild(newGridSquare);
+            newGridSquare.style.padding = calculatePadding(gridSize);
+            newGridRow.appendChild(newGridSquare);
         }
     }
 }
@@ -38,39 +45,38 @@ trail.addEventListener("mouseout", (event) => {
 // Function that removes the grid. Used later as part of resetting sketchpad
 function removeGrid() {
     const grid = document.querySelector("#grid");
-    const allGridColumns = document.querySelectorAll(".gridColumn");
-    allGridColumns.forEach((gridColumn) => grid.removeChild(gridColumn));
+    const allGridRows = document.querySelectorAll(".gridRow");
+    allGridRows.forEach((gridRow) => grid.removeChild(gridRow));
 }
 
 // Takes user input from reset sketchpad button. Makes sure it's valid. Removes existing grid. Adds new grid with correct size. 
-// NEED TO MAKE SURE NEW GRID IS SAME TOTAL SIZE AS INITIAL GRID 
 const resetSketchpad = document.querySelector("#button");
 resetSketchpad.addEventListener("click", () => {
-    let newGridInput = prompt("Please enter the number of squares per side of the new sketchpad:");
+    gridSize = prompt("Please enter the number of squares per side of the new sketchpad:");
     const errorMessage = document.querySelector("#error");
     const priorError = document.querySelector(".errorMessage");
     if (priorError) {
         errorMessage.removeChild(priorError);
     }
-    if (Number(newGridInput) <= 0) {
+    if (Number(gridSize) <= 0) {
         const zeroOrLess = document.createElement("div");
         zeroOrLess.classList.add("errorMessage");
         zeroOrLess.textContent = "Whoops! Your sketchpad can't have 0 or negative squares. Please enter a different sketchpad size.";
         zeroOrLess.style.cssText = "color: red; padding: 0px 50px; margin-bottom: 25px;";
         errorMessage.appendChild(zeroOrLess);
-    } else if (Number(newGridInput) >= 100) {
+    } else if (Number(gridSize) > 100) {
         const gridTooBig = document.createElement("div");
         gridTooBig.classList.add("errorMessage");
-        gridTooBig.textContent = "Whoops! Your sketchpad can't have 100 or more squares per side. Please enter a different sketchpad size.";
+        gridTooBig.textContent = "Whoops! Your sketchpad can't have more than 100 squares per side. Please enter a different sketchpad size.";
         gridTooBig.style.cssText = "color: red; padding: 0px 50px; margin-bottom: 25px;";
         errorMessage.appendChild(gridTooBig);
-    } else if (typeof newGridInput != "number" && isNaN(newGridInput)) {
+    } else if (typeof gridSize != "number" && isNaN(gridSize)) {
         const notANumber = document.createElement("div");
         notANumber.classList.add("errorMessage");
         notANumber.textContent = "Whoops! You didn't enter a number. Please enter a valid sketchpad size.";
         notANumber.style.cssText = "color: red; padding: 0px 50px; margin-bottom: 25px;";
         errorMessage.appendChild(notANumber);
-    } else if (!Number.isInteger(Number(newGridInput))) {
+    } else if (!Number.isInteger(Number(gridSize))) {
         const notAnInt = document.createElement("div");
         notAnInt.classList.add("errorMessage");
         notAnInt.textContent = "Whoops! Your sketchpad size had a decimal. Please enter a whole number when resetting it.";
@@ -78,6 +84,6 @@ resetSketchpad.addEventListener("click", () => {
         errorMessage.appendChild(notAnInt);
     } else {
         removeGrid();
-        createGrid(newGridInput);
+        createGrid(gridSize);
     }
 });

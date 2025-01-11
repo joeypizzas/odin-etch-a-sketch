@@ -20,11 +20,10 @@
     align-items: center;
 }
 
-.gridColumn {
+.gridRow {
     display: flex;
 }
 
 .gridSquare {
     border: 1px solid black;
-    padding: 15px;
 }

@@ -26,6 +26,8 @@ function createGrid(gridSizeInput) {
 
 createGrid(gridSize);
 
+// Function that randomizes color of each square's pixelated trail
+
 // Adds hover effect when entering square 
 const hover = document.querySelector("#grid");
 hover.addEventListener("mouseover", (event) => {

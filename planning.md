@@ -31,4 +31,21 @@
     - Clicking it prompts for the size of the new grid you want.
     - Submitting it calls function that removes the existing grid, adds the new grid. Max size of 100x100 is allowed. Anything bigger throws an error. Non-numbers throws an error. Negative numbers throws an error. Non-integers throw an error. 
     - Make sure new grid is added in the same total space as initial grid. 
-7. Add randomized color for hover and or pixelated trail. Likely using function to assign random RGB value to hover or background color after triggering an event handler. Do this on a new branch after completing project. 
+7. Add randomized color for pixelated trail:
+    - New function that randomizes color. 
+    - Initalize 3 RGB value variables outside of the loops. 
+    - 3 infinite loops. In each one:
+        - Assign one of the variables to math.random.
+        - Trim the variable to 3 places. 
+        - Check whether value <= .255. 
+        - If so:
+            - Check whether value ends in a 0. If so:
+                - Trim the third digit. 
+                - Multiple value by 100. 
+                - Break the loop
+            - If value doesn't end in a 0:
+                - Multiply the value by 1000. 
+                - Break the loop. 
+    - Concatenate the three variables into RGB format. 
+    -After creating function, call function to assign background color with pixelated trail. 
+        

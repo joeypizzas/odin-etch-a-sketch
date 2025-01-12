@@ -26,7 +26,63 @@ function createGrid(gridSizeInput) {
 
 createGrid(gridSize);
 
+// Helper function that returns third digit of three digit number, used as part of randomizing pixelated trail color
+function getThirdDigit(threeDigitNumber) {
+    const thirdDigit = Math.floor((threeDigitNumber * 1000) % 10);
+    return thirdDigit;
+}
+
 // Function that randomizes color of each square's pixelated trail
+function randomRGBColor() {
+    let firstRGBValue;
+    let secondRGBValue;
+    let thirdRGBValue;
+
+    for (let i = 0; ; i++) {
+        firstRGBValue = Math.random();
+        firstRGBValue = firstRGBValue.toFixed(3);
+        if (firstRGBValue <= .255) {
+            if (getThirdDigit(firstRGBValue === 0)) {
+                firstRGBValue = (firstRGBValue.toFixed(2)) * 100;
+                break;
+            } else {
+                firstRGBValue = firstRGBValue * 1000;
+                break;
+            }
+        }
+    }
+
+    for (let j = 0; ; j++) {
+        secondRGBValue = Math.random();
+        secondRGBValue = secondRGBValue.toFixed(3);
+        if (secondRGBValue <= .255) {
+            if (getThirdDigit(secondRGBValue === 0)) {
+                secondRGBValue = (secondRGBValue.toFixed(2)) * 100;
+                break;
+            } else {
+                secondRGBValue = secondRGBValue * 1000;
+                break;
+            }
+        }
+    }
+
+    for (let k = 0; ; k++) {
+        thirdRGBValue = Math.random();
+        thirdRGBValue = thirdRGBValue.toFixed(3);
+        if (thirdRGBValue <= .255) {
+            if (getThirdDigit(thirdRGBValue === 0)) {
+                thirdRGBValue = (thirdRGBValue.toFixed(2)) * 100;
+                break;
+            } else {
+                thirdRGBValue = thirdRGBValue * 1000;
+                break;
+            }
+        }
+    }
+
+    const RGBColor = "rgb(" + firstRGBValue + ", " + secondRGBValue + ", " + thirdRGBValue + ")";
+    return RGBColor;
+}
 
 // Adds hover effect when entering square 
 const hover = document.querySelector("#grid");
@@ -40,7 +96,7 @@ hover.addEventListener("mouseover", (event) => {
 const trail = document.querySelector("#grid");
 trail.addEventListener("mouseout", (event) => {
     if (event.target.classList.contains("gridSquare")) {
-        event.target.style.backgroundColor = "black";
+        event.target.style.backgroundColor = randomRGBColor();
     }
 });
 
